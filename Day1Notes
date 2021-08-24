@@ -1,20 +1,39 @@
 OBJECTIVES FOR HOME
-
-
 REVIEW BINARY --> HEX
+ADDING HEXADECIMALS
+ADDING BINARY
+Signed vs Unsigned integers?
+Get VM configed 
+Get VPN configed
+
+INCLASS
 
 TENS COMPLIMENT (assume 2 digits)
-1)
-  27 - 13
+1) 
+27 - 13
   27 + -13
   27 + 86 --> 113 --> 13
-  1) Subtract each digit from 9
-  2) add one
+  a) Subtract each digit from 9
+  b) add one
   
- 2) 31 - 17
-    9 - 7 = 2
-    9 - 1 = 8
-    31 + 83 = 114 (2 digits) --> 14
-    
-    
-  
+ 2)
+   31 - 17
+   a) 9 - 7 = 2
+   a) 9 - 1 = 8
+   b) 31 + 83 = 114 (2 digits) --> 14
+ 
+ TWOS COMPLIMENT (Assume 8 digits) (Assuming signed numbers)
+ a) Sub each digit from 1 (FLIP THE BITS)
+ b) Add one
+ 7 - 3
+ 00000111 (7)
+-00000011 (3) 
+
+a)11111100 + 1 -> 11111101
+
+a) 00000111 + 11111101 = 00000100 -> 4
+
+HEX NUMBERLINE
+-128- 0X80 -------------------------0X00--------------------0X7F 127
+
+
