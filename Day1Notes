@@ -1,0 +1,20 @@
+OBJECTIVES FOR HOME
+
+
+REVIEW BINARY --> HEX
+
+TENS COMPLIMENT (assume 2 digits)
+1)
+  27 - 13
+  27 + -13
+  27 + 86 --> 113 --> 13
+  1) Subtract each digit from 9
+  2) add one
+  
+ 2) 31 - 17
+    9 - 7 = 2
+    9 - 1 = 8
+    31 + 83 = 114 (2 digits) --> 14
+    
+    
+  
