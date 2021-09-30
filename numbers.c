@@ -5,8 +5,7 @@
 // This is the starter program for the number classification problem.
 // This version is specifically for ARMSIM. Take this and run with it.
 //
-// Author: Bill
-// For:    CYBR 2250
+//
 //
 // ============================================================
 #include <stdbool.h>
