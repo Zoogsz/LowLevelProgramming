@@ -2,8 +2,7 @@
 @
 @ Palindrome problem for ARM - starter code.
 @
-@ Author: Bill Mahoney
-@ For:    CYBR 2250
+@
 @
 @ ============================================================
 
