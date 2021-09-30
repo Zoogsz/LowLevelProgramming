@@ -5,7 +5,8 @@
 // This is the starter program for the number classification problem.
 // This version is specifically for ARMSIM. Take this and run with it.
 //
-//
+// Author: 
+// For:    CYBR 2250
 //
 // ============================================================
 #include <stdbool.h>
@@ -75,6 +76,7 @@ int isPrime (int num)
 }
 int isTriangular (int num)
 {
+	int sum = 0;
 	for( int i = 0; i < 65000; ++i) //anything over 65k is a larger susm then signed 32bit integers can hold
 	{
 		sum += i;
@@ -83,8 +85,10 @@ int isTriangular (int num)
 	
 		if (sum > num) //if over not a triangular num
 		{ return 0; }
-	return 1; // if match return true
 		
+	return 1; // if match return true
+	}
+}
 int isSquare(int num)
 {
 	for ( int i = 0; i  <= num; i++ ) // adding <= to solve edge case of 1
@@ -96,10 +100,11 @@ int isSquare(int num)
 }
 
 int isHexagonal(int num)
-{
+{ 
+	int sum = 0;
 	for( int i = 0; i < 65000; ++i) //anything over 65k is a larger susm then signed 32bit integers can hold
 	{
-		sum += i
+		sum += i;
 		
 		if (( i  % 2) == 0) // if an even number is being added to the sum we can disqualify it as a hex 
 		{ continue; }
@@ -111,17 +116,19 @@ int isHexagonal(int num)
 		{ return 0; }
 		
 		return 1;
-		 // if match return true	
+		 // if match return true
+	}		 
 }	
 
 int isPerfect(int num)
 {
-	int PERFECT[] = { 6 , 28, 496, 8128, 33550336 }
-	for( int i = 0; i < (sizeof(PERFECT) / sizeof(int); ++i) //dynamically allocate for loop because clout
+	int PERFECT[] = { 6 , 28, 496, 8128, 33550336 };
+	for( int i = 0; i < (sizeof(PERFECT) / sizeof(num)); ++i) //dynamically allocate for loop because clout
 	{
 		if (num == PERFECT[i])
 		{ return 1; }
 	}
+	
 	return 0;
 	
 }
@@ -140,36 +147,37 @@ int main()
     // LCD display, then wait for a button to be pressed.
     while ( ( n = swi_read_int( fd ) ) >= 0 )
     {
-		swi_write(1, "About the number " + n + "\n"
+		printf("%s %i\n", "About the number", n); 
+		
 		if(isPrime(n) == 1)
-		{swi_write("That number is prime")}
+		{printf("%s\n",  "That number is a prime");}
 	
 		else
-		{ swi_write("That number is not prime")}
+		{printf("%s\n","That number is not prime");}
 	
 		if(isTriangular(n) == 1)
-		{swi_write("That number is triangular")}
+		{printf("%s\n", "That number is triangular");}
 	
 		else
-		{ swi_write("That number is not triangular")}
+		{printf("%s\n", "That number is not triangular");}
 	
 		if(isSquare(n) == 1)
-		{swi_write("That number is a square")}
+		{printf("%s\n", "That number is a square");}
 	
-		else
-		{ swi_write("That number is not a square")}
+		else{
+		printf("%s\n", "That number is not a square");}
 	
-		if(isHexagonal(n) == 1)
-		{swi_write("That number is hexagonal")}
+		if(isHexagonal(n) == 1){
+		printf("%s\n", "That number is hexagonal");}
 	
-		else
-		{ swi_write("That number is not hexagonal")}
+		else{
+			printf("%s\n", "That number is not hexagonal");}
 	
 		if(isPerfect(n) == 1)
-		{swi_write("That number is perfect")}
+		{printf("%s\n", "That number is perfect");}
 	
 		else
-		{ swi_write("That number is not perfect")}
+		{printf ("%s\n", "That number is not perfect");}
         swi_lcd_int( 0, 0, n );
         swi_button_wait();
         swi_clear();
