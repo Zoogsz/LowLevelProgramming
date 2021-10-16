@@ -1,23 +1,24 @@
+
 .global expand
 .type expand, %function
+.global byte_at
+.type byte_at, %function
 
 expand:
     @ loop through hexstring and store each char in r2
     @ r3 is going to be our counter
     @ r7 will be used later as our index in our binstring
+	push {r4-r6, lr} @pushes registers 4,5,6
     mov r3, #0
     mov r7, #0
 
-	expand_loop_hexstring:
-        @ load the hexstring byte into r2
-        ldrb r2, [r0, r3]
-        @ a null byte indicates the end of the hexstring
-        cmp r2, #0
-
-        cmp r2, #0x3a
+expand_loop_hexstring:
+	ldrb r2, [r0, r3]  @ load the hexstring byte into r2
+	cmp r2, #0  @ a null byte indicates the end of the hexstring
+	cmp r2, #0x3a
 
    blt expand_loop_hexstring_digit
-        b expand_loop_hexstring_letter
+   b expand_loop_hexstring_letter
         
 expand_loop_hexstring_digit:
             sub r2, #0x30
@@ -49,30 +50,27 @@ expand_loop_hexstring_digit:
                 beq expand_loop_hexstring_converted_bitloop_zero
                 b expand_loop_hexstring_converted_bitloop_one
                 
-                @ yes, there's a better way to do this than two separate
-                @ branches with one tiny difference that are otherwise identical,
-                @ but i feel this is cleaner for you to read and understand
+
                 expand_loop_hexstring_converted_bitloop_zero:
                     @ 0x30 is hex value for ascii '0'
                     mov r6, #0x30
                     strb r6, [r1, r7]
                     add r7, r7, #1
-                    b expand_loop_converted_char_added
+                    b expand_loop_hexstring_converted_char_added
                     
                 expand_loop_hexstring_converted_bitloop_one:
                     @ 0x30 is hex value for ascii '1'
                     mov r6, #0x31
                     strb r6, [r1, r7]
                     add r7, r7, #1
-                    b expand_loop_converted_char_added
+                    b expand_loop_hexstring_converted_char_added
                 
                 expand_loop_hexstring_converted_char_added:
                 lsr r5, r5, #1
                 cmp r4, #4
                 bge expand_loop_hexstring_converted_end
             
-            expand_loop_hexstring_converted_end:
-            @ aand we're done!
+            expand_loop_hexstring_converted_end: @end loop
         
         @ increment r3 (our counter, remember?)
         add r3, #1
@@ -83,3 +81,10 @@ expand_loop_hexstring_digit:
         
     @ basically our `return` statement
     mov pc, lr
+	
+	pop {r4-r6, pc }
+	
+byte_at:
+	push { r4-r6, lr }
+	
+	pop { r4-r6, pc}
